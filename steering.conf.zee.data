@@ -1,0 +1,212 @@
+LibraryNames libTopEventSelectionTools libTopEventReconstructionTools
+
+### Good Run List
+GRLDir  GoodRunsLists
+GRLFile data15_13TeV/20170619/physics_25ns_21.0.19.xml data16_13TeV/20180129/physics_25ns_21.0.19.xml data17_13TeV/20180619/physics_25ns_Triggerno17e33prim.xml data18_13TeV/20190219/physics_25ns_Triggerno17e33prim.xml
+
+### Pile-up reweighting tool - Metadata determines which to use
+# MC16a configuration
+
+### This setup is for the CI tests
+PRWConfigFiles_FS dev/AnalysisTop/PileupReweighting/user.iconnell.Top.PRW.MC16a.FS.v2/CI.prw.merged.root
+PRWConfigFiles_AF dev/AnalysisTop/PileupReweighting/user.iconnell.Top.PRW.MC16a.AF.v2/CI.prw.merged.root
+
+### Use following lines (uncomment) for your config file
+#PRWConfigFiles_FS dev/AnalysisTop/PileupReweighting/user.iconnell.Top.PRW.MC16a.FS.v2/prw.merged.root
+#PRWConfigFiles_AF dev/AnalysisTop/PileupReweighting/user.iconnell.Top.PRW.MC16a.AF.v2/prw.merged.root
+
+PRWLumiCalcFiles GoodRunsLists/data15_13TeV/20170619/PHYS_StandardGRL_All_Good_25ns_276262-284484_OflLumi-13TeV-008.root GoodRunsLists/data16_13TeV/20180129/PHYS_StandardGRL_All_Good_25ns_297730-311481_OflLumi-13TeV-009.root GoodRunsLists/data17_13TeV/20180619/physics_25ns_Triggerno17e33prim.lumicalc.OflLumi-13TeV-010.root GoodRunsLists/data18_13TeV/20190318/ilumicalc_histograms_None_348885-364292_OflLumi-13TeV-010.root
+
+# MC16d configuration
+#PRWConfigFiles_FS dev/AnalysisTop/PileupReweighting/user.iconnell.Top.PRW.MC16d.FS.v2/CI.prw.merged.root
+#PRWConfigFiles_AF dev/AnalysisTop/PileupReweighting/user.iconnell.Top.PRW.MC16d.AF.v2/CI.prw.merged.root
+#PRWActualMu_FS GoodRunsLists/data17_13TeV/20180619/physics_25ns_Triggerno17e33prim.actualMu.OflLumi-13TeV-010.root
+#PRWActualMu_AF GoodRunsLists/data17_13TeV/20180619/physics_25ns_Triggerno17e33prim.actualMu.OflLumi-13TeV-010.root
+#PRWLumiCalcFiles GoodRunsLists/data17_13TeV/20180619/physics_25ns_Triggerno17e33prim.lumicalc.OflLumi-13TeV-010.root
+
+# MC16e configuration
+PRWConfigFiles_FS dev/AnalysisTop/PileupReweighting/user.iconnell.Top.PRW.MC16e.FS.v2/prw.merged.root
+PRWConfigFiles_AF dev/AnalysisTop/PileupReweighting/user.iconnell.Top.PRW.MC16e.AF.v2/prw.merged.root
+PRWActualMu_FS GoodRunsLists/data18_13TeV/20190318/physics_25ns_Triggerno17e33prim.actualMu.OflLumi-13TeV-010.root
+PRWActualMu_AF GoodRunsLists/data18_13TeV/20190318/physics_25ns_Triggerno17e33prim.actualMu.OflLumi-13TeV-010.root
+PRWLumiCalcFiles GoodRunsLists/data18_13TeV/20190318/ilumicalc_histograms_None_348885-364292_OflLumi-13TeV-010.root
+
+#setup of TDP file, comment the following line to use the default one instead
+TDPPath dev/AnalysisTop/TopDataPreparation/CI-XSection-MC16-13TeV.data
+
+### Object container names
+ElectronCollectionName Electrons
+MuonCollectionName Muons
+JetCollectionName AntiKt4EMPFlowJets_BTagging201903
+JetPt 10000
+SaveFailJVTJets True
+JetEta 4.5
+LargeJetCollectionName None
+TauCollectionName TauJets
+PhotonCollectionName Photons
+TrackJetCollectionName None
+JetGhostTrackDecoName None
+
+### Large-R configuration
+LargeRJESJMSConfig CombMass
+LargeRJetPt 200000
+LargeRJetEta 2
+LargeJetSubstructure None
+
+### Reclustered jet configuration
+UseRCJets None
+#UseRCJetSubstructure True
+RCJetEta 2.0
+UseVarRCJets True
+VarRCJetMassScale m_w,m_t
+VarRCJetRho 2
+
+### Truth configuration
+TruthCollectionName TruthParticles
+TruthJetCollectionName AntiKt4TruthDressedWZJets
+TruthTauCollectionName TruthTaus
+TruthTauPt 7000
+TruthTauEta 3.5
+TruthJetPt 1000
+TruthElectronPt 7000
+TruthElectronEta 3.5
+TruthMuonPt 7000
+TruthMuonEta 3.5
+TruthJetEta 10.0
+TruthLargeRJetCollectionName AntiKt10TruthTrimmedPtFrac5SmallR20Jets
+TopPartonHistory ttbar
+TopParticleLevel True
+TruthBlockInfo False
+PDFInfo True
+
+### Object loader/ output configuration
+ObjectSelectionName top::ObjectLoaderStandardCuts
+OutputFormat top::EventSaverFlatNtuple
+OutputEvents SelectedEvents
+OutputFilename output.root
+PerfStats No
+
+
+### Systematics configuration
+Systematics Nominal
+JetUncertainties_NPModel CategoryReduction
+LargeRJetUncertainties_NPModel CategoryReduction
+
+### Electron configuration
+ElectronPt 7000
+ElectronID TightLH
+ElectronIDLoose LooseAndBLayerLH
+ElectronIsolation FCTight
+ElectronIsolationLoose None
+
+### Photon configuration
+PhotonPt 25000
+PhotonEta 2.5
+PhotonID Tight
+PhotonIDLoose Loose
+PhotonIsolation FixedCutTight
+PhotonIsolationLoose FixedCutLoose
+PhotonUseRadiativeZ False
+
+### Muon configuration
+MuonPt 7000
+MuonQuality Medium
+MuonUseMVALowPt False
+MuonUse2stationHighPt True
+MuonIsolation PflowTight_FixedRad
+MuonQualityLoose Medium
+MuonUseMVALowPtLoose False
+MuonUse2stationHighPtLoose True
+MuonIsolationLoose None
+MuonDoExtraSmearingHighPt False
+MuonDoSmearing2stationHighPt True
+
+### Tau configuration
+TauPt 25000
+TauJetIDWP RNNMedium
+TauJetIDWPLoose RNNLoose
+TauEleBDTWP Loose
+TauEleBDTWPLoose Loose
+TauEleOLR False
+TauEleOLRLoose False
+
+OverlapRemovalProcedure recommended
+OverlapRemovalLeptonDef Loose
+
+# DoTight/DoLoose to activate the loose and tight trees
+# each should be one in: Data, MC, Both, False
+DoTight Both
+DoLoose False
+
+# Turn on MetaData to pull IsAFII from metadata
+UseAodMetaData True
+#IsAFII False
+
+### Boosted jet taggers configuration
+BoostedJetTagging JSSWTopTaggerDNN:DNNTaggerTopQuarkInclusive50 JSSWTopTaggerDNN:DNNTaggerTopQuarkInclusive80 JSSWTopTaggerDNN:DNNTaggerTopQuarkContained50 JSSWTopTaggerDNN:DNNTaggerTopQuarkContained80
+
+### B-tagging configuration
+BTaggingCaloJetWP DL1:Continuous DL1r:FixedCutBEff_77
+BTaggingTrackJetWP DL1:Continuous DL1r:FixedCutBEff_77
+# Example of how to remove systematics from b-tag EV
+
+# Saving bootstrapping weights
+SaveBootstrapWeights False
+NumberOfBootstrapReplicas 100
+
+NEvents -1
+
+### Global lepton trigger scale factor example
+UseGlobalLeptonTriggerSF True
+GlobalTriggers 2015@e24_lhmedium_L1EM20VH_OR_e60_lhmedium_OR_e120_lhloose,mu20_iloose_L1MU15_OR_mu50 2016@e26_lhtight_nod0_ivarloose_OR_e60_lhmedium_nod0_OR_e140_lhloose_nod0,mu26_ivarmedium_OR_mu50 2017@e26_lhtight_nod0_ivarloose_OR_e60_lhmedium_nod0_OR_e140_lhloose_nod0,mu26_ivarmedium_OR_mu50 2018@e26_lhtight_nod0_ivarloose_OR_e60_lhmedium_nod0_OR_e140_lhloose_nod0,mu26_ivarmedium_OR_mu50
+GlobalTriggersLoose 2015@e24_lhmedium_L1EM20VH_OR_e60_lhmedium_OR_e120_lhloose,mu20_iloose_L1MU15_OR_mu50 2016@e26_lhtight_nod0_ivarloose_OR_e60_lhmedium_nod0_OR_e140_lhloose_nod0,mu26_ivarmedium_OR_mu50 2017@e26_lhtight_nod0_ivarloose_OR_e60_lhmedium_nod0_OR_e140_lhloose_nod0,mu26_ivarmedium_OR_mu50 2018@e26_lhtight_nod0_ivarloose_OR_e60_lhmedium_nod0_OR_e140_lhloose_nod0,mu26_ivarmedium_OR_mu50
+
+SUB mm_zee
+INITIAL
+GRL
+GOODCALO
+PRIVTX
+RECO_LEVEL
+JETCLEAN LooseBad
+GTRIGDEC
+MU_N 27000 >= 1
+MU_N 10000 >= 2
+MU_N_TIGHT 27000 >= 1
+MU_N_TIGHT 10000 == 2
+GTRIGMATCH
+EL_N 25000 == 0
+JET_N 10000 >= 1
+OS
+MLL > 81000
+MLL < 101000
+NOBADMUON
+
+SUB ee_zee
+INITIAL
+GRL
+GOODCALO
+PRIVTX
+RECO_LEVEL
+JETCLEAN LooseBad
+GTRIGDEC
+EL_N 27000 >= 1
+EL_N 10000 >= 2
+EL_N_TIGHT 27000 >= 1
+EL_N_TIGHT 10000 == 2
+GTRIGMATCH
+MU_N 25000 == 0
+JET_N 10000 >= 1
+OS
+MLL > 81000
+MLL < 101000
+NOBADMUON
+
+SELECTION mm_data
+. mm_zee
+SAVE
+
+SELECTION ee_data
+. ee_zee
+SAVE
+
+
