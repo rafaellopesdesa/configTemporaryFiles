@@ -63,7 +63,7 @@ VarRCJetRho 2
 
 ### Truth configuration
 TruthCollectionName TruthParticles
-TruthJetCollectionName AntiKt4TruthDressedWZJets
+TruthJetCollectionName AntiKt4TruthWZJets
 TruthTauCollectionName TruthTaus
 TruthTauPt 7000
 TruthTauEta 3.5
